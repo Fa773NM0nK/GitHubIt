@@ -1,1 +1,4 @@
-If you do not run with "--setup" initially, GithubIt will assume global Git settings.
+If you do not run with "--setup" initially, GitHubIt will assume global Git settings.
+
+Warning :	"--setup" WILL OVERWRITE ".gitignore" at the root directory of the project, if any
+			"--setup" WILL add ".gitignore" too to ".gitignore"
