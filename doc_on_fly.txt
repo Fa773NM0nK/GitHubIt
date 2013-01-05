@@ -1,0 +1,1 @@
+If you do not run with "--setup" initially, GithubIt will assume global Git settings.
