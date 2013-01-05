@@ -1,4 +1,6 @@
 If you do not run with "--setup" initially, GitHubIt will assume global Git settings.
 
+"--setup" will NOT setup a Git repo. For that clone or init a repo.
+
 Warning :	"--setup" WILL OVERWRITE ".gitignore" at the root directory of the project, if any
 			"--setup" WILL add ".gitignore" too to ".gitignore"
