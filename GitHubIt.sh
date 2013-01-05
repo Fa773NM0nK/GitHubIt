@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # setting up GithubIt
+
 # asks user whether he wants to use the global username and email or setup a new, local one
 # then asks git to ignore this script AND ".gitignore"
+
 if [ "$1" = "--setup" ];
 	then
 	option=0;
@@ -58,5 +60,31 @@ if [ "$1" = "--setup" ];
 	
 	echo -e "\nGitHubIt Setup Successfully!"
 	exit 0
+
+
+# starting to track files
+
+elif [ "$1" = "--track" ];
+	then
+	for file in ${@:2}
+	do
+		git add $file
+		if [ "$?" -eq 0 ];
+		then
+			echo -e "Tracking \"$file\""
+		else
+			echo -e "\n\t\e[41mFailed to track \"$file\"!\e[0m Cannot find it.\n"
+		fi 
+	done
+
+elif [ "$1" = "--trackall" ]
+	then
+	git add .
+	if [ "$?" -ne 0 ];
+	then
+		echo -e "\n\t\e[41mFailed!!!\e[0m\n"
+	else
+		echo "Tracking Everyting"
+	fi
 fi
 
