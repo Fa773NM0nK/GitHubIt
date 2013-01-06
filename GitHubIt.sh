@@ -140,6 +140,13 @@ then
 	else
 		git commit --allow-empty-message -m ""
 	fi
+
+
+# an interface for pull
+
+elif [ "$1" = "--pull" ];
+then
+	git pull
 fi
 
 exit 0
