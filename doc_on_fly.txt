@@ -5,5 +5,5 @@ If you do not run with "--setup" initially, GitHubIt will assume global Git sett
 Warning :	"--setup" WILL OVERWRITE ".gitignore" at the root directory of the project, if any
 			"--setup" WILL add ".gitignore" too to ".gitignore"
 			
-Note :	"--commit" without any files specified, wiuld commit all changed files
+Note :	"--commit" without any files specified, would commit all changed files
 		in "--commit", if a specified file is not tracked IT WILL BE SET AS TRACKED before the commit
