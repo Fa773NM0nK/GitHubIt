@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # setting up GithubIt
 
 # asks user whether he wants to use the global username and email or setup a new, local one
@@ -189,5 +190,3 @@ fi
 # exiting without errors ( yay! )
 
 exit 0
-
-
