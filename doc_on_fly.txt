@@ -1,4 +1,4 @@
-If you do not run with "--setup" initially, GitHubIt will assume global Git settings.
+If you do not run with "--setup" initially, GitHubIt will assume global Git settings. Also, GitHubIt.sh would NOT be ignored by git.
 
 "--setup" will NOT setup a Git repo. For that clone or init a repo.
 
