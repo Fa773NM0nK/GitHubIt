@@ -5,7 +5,7 @@
 # asks user whether he wants to use the global username and email or setup a new, local one
 # then asks git to ignore this script AND ".gitignore"
 
-if [ "$1" = "--setup" ];
+if [ "$1" = "--setup" -o "$1" = "-s" ];
 then
 	option=0;
 	while [ "$option" -ne 1 -a "$option" -ne  2  ];
@@ -63,7 +63,7 @@ then
 
 # starting to track files
 
-elif [ "$1" = "--track" ];
+elif [ "$1" = "--track" -o "$1" = "-t" ];
 then
 	for file in ${@:2}
 	do
@@ -76,7 +76,7 @@ then
 		fi 
 	done
 
-elif [ "$1" = "--trackall" ];
+elif [ "$1" = "--trackall" -o "$1" = "-ta" ];
 then
 	git add .
 	if [ "$?" -ne 0 ];
@@ -90,9 +90,9 @@ then
 # committing changes
 
 files=""
-elif [ "$1" = "--commit" ];
+elif [ "$1" = "--commit" -o "$1" = "-c" ];
 then
-	if [ "$2" = "--message" ]
+	if [ "$2" = "--message" -o "$2" = "-m" ];
 	then
 		if test -z "$3"
 		then
@@ -140,14 +140,54 @@ then
 	else
 		git commit --allow-empty-message -m ""
 	fi
+	
+	if [ "$?" -eq 0 ];
+	then
+		echo "Committed Successfuly!"
+	else
+		echo -e "\n\t\e[41mCommit Failed!\e[0m\n"
+		git reset HEAD
+		exit 1
+	fi
+
+
+# an interface for push
+
+elif [ "$1" = "--push" -o "$1" = "-ph" ];
+then
+	git push -u
+	
+	if [ "$?" -eq 0 ];
+	then
+		echo "Pushed Successfuly!"
+	else
+		echo -e "\n\t\e[41Push Failed!\e[0m\n"
+		exit 1
+	fi
 
 
 # an interface for pull
 
-elif [ "$1" = "--pull" ];
+elif [ "$1" = "--pull" -o "$1" = "-pl" ];
 then
 	git pull
+	
+	if [ "$?" -eq 0 ];
+	then
+		echo "Pulled Successfuly!"
+	else
+		echo -e "\n\t\e[41mCommit Failed!\e[0m\n"
+		exit 1
+	fi
+
+
+else
+	echo -e "\n\t\e[41mError\e[0m : Cannot understand options\n"
 fi
 
+
+# exiting without errors ( yay! )
+
 exit 0
+
 
