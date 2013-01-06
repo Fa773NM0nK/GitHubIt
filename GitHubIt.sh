@@ -95,7 +95,7 @@ elif [ "$1" = "--commit" -o "$1" = "-c" ];
 then
 	if [ "$2" = "--message" -o "$2" = "-m" ];
 	then
-		if test -z "$3"
+		if [ $# -lt 3 ]
 		then
 			echo -e "\n\t\e[41mError\e[0m : \e[36mCommit Message not provided\e[0m, Exiting\n"
 			exit 1
@@ -162,7 +162,28 @@ then
 	then
 		echo "Pushed Successfuly!"
 	else
-		echo -e "\n\t\e[41Push Failed!\e[0m\n"
+		echo -e "\n\t\e[41mPush Failed!\e[0m\n"
+		exit 1
+	fi
+	
+# an interface for first push
+
+elif [ "$1" = "--push-first" -o "$1" = "-phf" ];
+then
+	if [ $# -ge 2 ]
+	then
+		branch="$2"
+	else
+		branch="master"
+	fi
+	
+	git push origin $branch
+	
+	if [ "$?" -eq 0 ];
+	then
+		echo "Pushed Successfuly to branch : $branch!"
+	else
+		echo -e "\n\t\e[41mPush Failed!\e[0m\n"
 		exit 1
 	fi
 
@@ -177,7 +198,7 @@ then
 	then
 		echo "Pulled Successfuly!"
 	else
-		echo -e "\n\t\e[41mCommit Failed!\e[0m\n"
+		echo -e "\n\t\e[41mPull Failed!\e[0m\n"
 		exit 1
 	fi
 
