@@ -77,7 +77,7 @@ then
 		fi 
 	done
 
-elif [ "$1" = "--trackall" -o "$1" = "-ta" ];
+elif [ "$1" = "--track-all" -o "$1" = "-ta" ];
 then
 	git add .
 	if [ "$?" -ne 0 ];
