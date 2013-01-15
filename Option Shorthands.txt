@@ -1,0 +1,16 @@
+--setup			:	-s
+
+--track			:	-t
+
+--track-all		:	-ta
+
+--commit		:	-c
+
+--message		:	-m
+
+--push			:	-ph
+
+--push-first	:	-phf
+
+--pull			:	-pl
+
