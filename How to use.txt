@@ -1,0 +1,77 @@
+GitHubIt options specification
+
+
+"--setup"
+
+	The very first thing to be done once a repository is setup.
+		Note : this option will NOT setup a Git repository. For that 'clone' or 'init' a repository.
+		
+	If you do not run with this option initially, GitHubIt will assume global Git settings.
+		Also, GitHubIt.sh would NOT be ignored by git.
+	
+	Warning :	this option WILL OVERWRITE ".gitignore" at the root directory of the project, if any
+				this option WILL add ".gitignore" too to ".gitignore"
+	
+	This option will ask you if you want to use the Git Username and Email configured globally, or it will prompt you to enter one.
+		Note : 'Github' uses your Email to recognise which user you are.
+	
+	Then it will make a new '.gitignore' file and add 'GitHubIt.sh' and '.gitignore' to it.
+
+
+"--track"
+	
+	This option takes in a file list as argument.
+	It tells Git to track those files.
+	
+	
+"--track-all"
+
+	This option tracks everything in the directory, recursively!
+	
+	
+"--commit"
+
+	This option can be used in 4 ways: -
+	
+	1.	--commit
+		This will commit ALL the TRACKED files which have been MODIFIED, AND it will keep the commit message as empty.
+		
+	2.	--commit <file list>
+		This will commit ALL the files in the "<file list>"
+			If a specified file is not tracked, IT WILL BE SET AS TRACKED before the commit.
+		
+	3.	--commit --message <commit message>
+		This will commit ALL the TRACKED files which have been MODIFIED, AND it will keep the commit message as "<commit message>".
+		
+	4. --commit --message <commit message> <file list>
+		This will commit ALL the files in the "<file list>", AND it will keep the commit message as "<commit message>".
+			If a specified file is not tracked, IT WILL BE SET AS TRACKED before the commit.
+
+
+"--push-first"
+
+	This option is used if there is NO BRANCH yet in the repository.
+		This usually happens when you make a new repository in Github WITHOUT any files. Or you make a new repository using "git init".
+		
+	An indication that this should be used in when "--push" fails.
+		
+	It can be used in 2 ways: -
+	
+	1.	"--push-first"
+		This pushes to branch "master".
+			If that branch does not exist, it will be created.
+		
+	2.	"--push-first <branch name>"
+		This pushes to branch "<branch name>".
+			If that branch does not exist, it will be created.
+		All further pushes will be to "<branch name>"
+
+"--push"
+
+	This option pushes to the current upstream branch.
+	
+
+"--pull"
+	
+	This option pulls from the current branch.
+
